@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+<div class="card mt-4">
+ <div class="card-header bg-success text-center">
+    <h1>Visualiser son cv</h1>
+</div>
+<div class="card-body bg-light grey">
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>Login</th>
+                <td>{{ user.login }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr>
+        </tbody>
+    </table>
+<div class="row">
+<div class="col-md-2">
+    <a href="{{ path('user_index') }}" class="btn btn-sm btn-success">Retour liste</a>
+{{ include('user/_delete_form.html.twig') }}
+</div>
+<div class="col-md-2">
+    <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-sm btn-warning">Modifier</a>
+
+</div>
+    
+ </div>   
+</div>
+</div>
+{% endblock %}

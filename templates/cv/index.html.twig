@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CV index{% endblock %}
+
+{% block body %}
+<div class="card mt-4">
+ <div class="card-header bg-success text-center">
+    <h1>liste cv</h1>
+</div>
+<div class="card-body bg-light grey">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Age</th>
+                <th>Adresse</th>
+                <th>Email</th>
+                <th>Specialite</th>
+                <th>Niveau_etude</th>
+                <th>Experience_Professionnelle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cv in cvs %}
+            <tr>
+                <td>{{ cv.id }}</td>
+                <td>{{ cv.nom }}</td>
+                <td>{{ cv.prenom }}</td>
+                <td>{{ cv.age }}</td>
+                <td>{{ cv.adresse }}</td>
+                <td>{{ cv.email }}</td>
+                <td>{{ cv.specialite }}</td>
+                <td>{{ cv.niveauetude }}</td>
+                <td>{{ cv.ExperienceProfessionnelle }}</td>
+                <td>
+                    <a href="{{ path('cv_show', {'id': cv.id}) }}" class="btn btn-sm btn-success">Visualiser</a>
+                    <a href="{{ path('cv_edit', {'id': cv.id}) }}" class="btn btn-sm btn-warning">Modifier</a>
+                </td>
+            </tr>
+   </div>         
+   </div>         
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('cv_new') }}" class="btn btn-sm btn-success">nouveau cv</a>
+    <a href="{{ path('accueil') }}" class="btn btn-sm btn-success">Accueil</a>
+{% endblock %}
+
